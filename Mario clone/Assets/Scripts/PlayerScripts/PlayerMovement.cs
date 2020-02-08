@@ -8,6 +8,14 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D myBody;
     private Animator anim;
 
+    public Transform groundCheckPosition;
+    public LayerMask groundLayer;
+
+    private bool isGrounded;
+    private bool jumped;
+
+    public float jumpPower = 5f;
+
     private void Awake()
     {
         myBody = GetComponent<Rigidbody2D>();
@@ -23,7 +31,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //if (Physics2D.Raycast (groundCheckPosition.position, Vector2.down, 0.5f)) //draws the line for early collision
+        //{
+        //    print("Player collided with ground");
+        //}
+        CheckIfGrounded();
+        PlayerJump();
     }
 
     // called every few frames, change it in Edit > Project Settings > Time > Fixed Timestep
@@ -57,6 +70,48 @@ public class PlayerMovement : MonoBehaviour
         Vector3 tempScale = transform.localScale;
         tempScale.x = direction;
         transform.localScale = tempScale;
+    }
+
+    void CheckIfGrounded()
+    {
+        isGrounded = Physics2D.Raycast(groundCheckPosition.position, Vector2.down, 0.1f, groundLayer);
+        if (isGrounded)
+        {
+            if (jumped)
+            {
+                jumped = false;
+                anim.SetBool("Jump", false);
+            }
+        }
+    }
+
+    void PlayerJump()
+    {
+        if (isGrounded)
+        {
+            if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow))
+            {
+                jumped = true;
+                myBody.velocity = new Vector2(myBody.velocity.x, jumpPower);
+                anim.SetBool("Jump", true);
+            }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Ground")
+        {
+            print("Player collided with ground");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) //works only if one of two game objects is set as trigger in box collider
+    {
+        //if (collision.tag == "Ground")
+        //{
+        //    print("Player collided with ground");
+        //}
     }
 
 }// end PlayerMovement 
