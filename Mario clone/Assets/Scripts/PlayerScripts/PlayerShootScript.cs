@@ -5,7 +5,13 @@ using UnityEngine;
 public class PlayerShootScript : MonoBehaviour
 {
     public GameObject fireBullet;
-   
+    public Animator anim;
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +28,15 @@ public class PlayerShootScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
-            GameObject bullet = Instantiate(fireBullet, transform.position, Quaternion.identity);
+            GameObject bullet = Instantiate(fireBullet, transform.position, Quaternion.identity); // Creating bullets
             bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
+            anim.Play("PlayerAttack");
         }
+        else if (Input.GetKeyUp(KeyCode.J))
+        {
+            anim.Play("PlayerIdle");
+        }
+
     }
 
 } //end PlayerShootScript
