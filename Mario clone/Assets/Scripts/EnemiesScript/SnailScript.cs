@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -71,11 +72,22 @@ public class SnailScript : MonoBehaviour
 
                     canMove = false;
                     myBody.velocity = new Vector2(0, 0);
-                    anim.Play("SnailStuned");
+                    anim.Play("Stunned");
                     stunned = true;
+
+                    if (tag == MyTags.BEETLE_TAG)
+                    {
+                        //anim.Play("Stunned");
+                        StartCoroutine(Dead(0.5f));
+                    }
+
                 } else
                 {
-                    myBody.velocity = new Vector2(15f, myBody.velocity.y);
+                    if (tag != MyTags.BEETLE_TAG)
+                    {
+                        myBody.velocity = new Vector2(15f, myBody.velocity.y);
+                        StartCoroutine(Dead(3f));
+                    }
                 }
             }
         }
@@ -90,7 +102,11 @@ public class SnailScript : MonoBehaviour
                 }
                 else
                 {
-                    myBody.velocity = new Vector2(15f, myBody.velocity.y);
+                    if (tag != MyTags.BEETLE_TAG)
+                    {
+                        myBody.velocity = new Vector2(15f, myBody.velocity.y);
+                        StartCoroutine(Dead(3f));
+                    }
                 }
             }
         }
@@ -104,7 +120,11 @@ public class SnailScript : MonoBehaviour
                 }
                 else
                 {
-                    myBody.velocity = new Vector2(-15f, myBody.velocity.y);
+                    if (tag != MyTags.BEETLE_TAG)
+                    {
+                        myBody.velocity = new Vector2(-15f, myBody.velocity.y);
+                        StartCoroutine(Dead(3f));
+                    }
                 }
             }
         }
@@ -137,9 +157,10 @@ public class SnailScript : MonoBehaviour
         transform.localScale = tempScale;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    IEnumerator Dead(float timer)
     {
-        
+        yield return new WaitForSeconds(timer);
+        gameObject.SetActive(false);
     }
 
 } // end SnailScript
