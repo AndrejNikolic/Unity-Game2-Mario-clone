@@ -30,6 +30,7 @@ public class FrogScript : MonoBehaviour
         if (animation_Finished && animation_Started)
         {
             animation_Started = false;
+
             transform.parent.position = transform.position;
             transform.localPosition = Vector3.zero;
         }
@@ -42,14 +43,18 @@ public class FrogScript : MonoBehaviour
         animation_Started = true;
         animation_Finished = false;
 
+        jumpedTimes++;
+
         if (jumpedLeft)
         {
             anim.Play("FrogJumpLeft");
-            AnimationFinished();
         }
         else
         {
-
+            anim.Play("FrogJumpRight");
+            Vector3 tempScale = transform.localScale;
+            tempScale.x = -1;
+            transform.localScale = tempScale;
         }
 
         StartCoroutine(coroutine_Name);
@@ -59,6 +64,21 @@ public class FrogScript : MonoBehaviour
     {
         animation_Finished = true;
         anim.Play("FrogIdleLeft");
+
+        if (jumpedLeft)
+        {
+            anim.Play("FrogIdleLeft");
+        }
+        else
+        {
+            anim.Play("FrogIdleRight");
+        }
+
+        if (jumpedTimes == 3)
+        {
+            jumpedTimes = 0;
+            jumpedLeft = !jumpedLeft;
+        }
     }
 
 } //end FrogScript
