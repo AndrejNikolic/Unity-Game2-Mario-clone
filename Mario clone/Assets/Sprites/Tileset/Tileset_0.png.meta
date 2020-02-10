@@ -89,6 +89,9 @@ TextureImporter:
   - first:
       213: 6153081082109022444
     second: Tileset_0_28
+  - first:
+      213: -4365411619001051413
+    second: ChoBlock
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -748,7 +751,7 @@ TextureImporter:
         width: 68
         height: 63
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -769,7 +772,7 @@ TextureImporter:
         width: 67
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -777,6 +780,27 @@ TextureImporter:
       bones: []
       spriteID: 5f1fbf331ecf62a44b17e1ba3c9279a7
       internalID: 6153081082109022444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChoBlock
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 272
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: deb8678b1577b5b488b99e5b774fa378
+      internalID: -4365411619001051413
       vertices: []
       indices: 
       edges: []

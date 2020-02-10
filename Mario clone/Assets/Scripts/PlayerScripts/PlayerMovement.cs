@@ -31,10 +31,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Physics2D.Raycast (groundCheckPosition.position, Vector2.down, 0.5f)) //draws the line for early collision
-        //{
-        //    print("Player collided with ground");
-        //}
         CheckIfGrounded();
         PlayerJump();
     }
@@ -98,20 +94,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.name == "Ground")
-        {
-            print("Player collided with ground");
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision) //works only if one of two game objects is set as trigger in box collider
     {
-        //if (collision.tag == "Ground")
-        //{
-        //    print("Player collided with ground");
-        //}
     }
 
 }// end PlayerMovement 

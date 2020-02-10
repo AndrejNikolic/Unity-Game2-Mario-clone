@@ -47,3 +47,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 1326411441
+    locked: 0
+  - name: Units
+    uniqueID: 3281208001
+    locked: 0
+  - name: Front
+    uniqueID: 1099844953
+    locked: 0
