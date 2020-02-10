@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - Snail
   - Spider
+  - Coin
   layers:
   - Default
   - TransparentFX
