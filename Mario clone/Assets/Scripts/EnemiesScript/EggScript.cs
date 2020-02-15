@@ -8,7 +8,7 @@ public class EggScript : MonoBehaviour
     {
         if (collision.gameObject.tag == MyTags.PLAYER_TAG)
         {
-            //DAMAGE the player
+            collision.gameObject.GetComponent<PlayerDamage>().DealDamage();
         }
         gameObject.SetActive(false);
     }

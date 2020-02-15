@@ -60,7 +60,7 @@ public class SpiderScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag==MyTags.BULLET_TAG)
+        if (collision.tag == MyTags.BULLET_TAG)
         {
             anim.Play("SpiderDead");
             myBody.bodyType = RigidbodyType2D.Dynamic;
@@ -68,5 +68,10 @@ public class SpiderScript : MonoBehaviour
             StartCoroutine(SpiderDead());
             StopCoroutine(coroutine_Name);
         }
+        if (collision.tag == MyTags.PLAYER_TAG)
+        {
+            collision.GetComponent<PlayerDamage>().DealDamage();
+        }
     }
+
 } //end SpiderScript

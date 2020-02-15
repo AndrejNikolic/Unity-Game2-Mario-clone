@@ -99,6 +99,7 @@ public class SnailScript : MonoBehaviour
                 if (!stunned)
                 {
                     //Apply damage to player
+                    leftHit.collider.gameObject.GetComponent<PlayerDamage>().DealDamage();
                 }
                 else
                 {
@@ -117,6 +118,7 @@ public class SnailScript : MonoBehaviour
                 if (!stunned)
                 {
                     //Apply damage to player
+                    rightHit.collider.gameObject.GetComponent<PlayerDamage>().DealDamage();
                 }
                 else
                 {

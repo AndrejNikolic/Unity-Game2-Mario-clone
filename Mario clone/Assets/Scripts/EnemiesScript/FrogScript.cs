@@ -14,6 +14,9 @@ public class FrogScript : MonoBehaviour
 
     private string coroutine_Name = "FrogJump";
 
+    public LayerMask playerLayer;
+    private GameObject player;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -23,6 +26,7 @@ public class FrogScript : MonoBehaviour
     void Start()
     {
         StartCoroutine(coroutine_Name);
+        player = GameObject.FindGameObjectWithTag(MyTags.PLAYER_TAG);
     }
 
     void LateUpdate() //called at the end of frame
@@ -33,6 +37,14 @@ public class FrogScript : MonoBehaviour
 
             transform.parent.position = transform.position;
             transform.localPosition = Vector3.zero;
+        }
+    }
+
+    void Update()
+    {
+        if (Physics2D.OverlapCircle(transform.position, 0.5f, playerLayer))
+        {
+            player.GetComponent<PlayerDamage>().DealDamage();
         }
     }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerShootScript : MonoBehaviour
 {
     public GameObject fireBullet;
-    public Animator anim;
+    private Animator anim;
 
     private void Awake()
     {
