@@ -8,7 +8,7 @@ public class CoinScript : MonoBehaviour
     private Text coinTextScore;
     private AudioSource audioManager;
 
-    private int score = 0;
+    public static int score = 0;
 
     private void Awake()
     {
