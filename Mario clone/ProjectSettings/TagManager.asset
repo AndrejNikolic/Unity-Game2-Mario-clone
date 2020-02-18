@@ -10,6 +10,7 @@ TagManager:
   - Snail
   - Spider
   - Coin
+  - Boss
   layers:
   - Default
   - TransparentFX

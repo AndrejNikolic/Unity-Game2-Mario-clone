@@ -48,11 +48,12 @@ public class BonusBlockScript : MonoBehaviour
             {
                 if (hit.collider.gameObject.tag == MyTags.PLAYER_TAG)
                 {
+
+                    audioManager.Play();
                     //increase score
-                    CoinScript.score++;
+                    CoinScript.addScore();
                     activeBlock = false;
                     //change block
-                    audioManager.Play();
                     anim.Play("BlockCollected");
                     startAnim = true;
                 }

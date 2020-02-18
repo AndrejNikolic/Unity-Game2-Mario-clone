@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CoinScript : MonoBehaviour
 {
-    private Text coinTextScore;
+    public static Text coinTextScore;
     private AudioSource audioManager;
 
     public static int score = 0;
@@ -27,13 +27,18 @@ public class CoinScript : MonoBehaviour
 
     }
 
+    public static void addScore()
+    {
+        score++;
+        coinTextScore.text = "x" + score.ToString();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == MyTags.COIN_TAG)
         {
             collision.gameObject.SetActive(false);
-            score++;
-            coinTextScore.text = "x" + score.ToString();
+            addScore();
             audioManager.Play();
         }
     }
