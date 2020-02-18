@@ -15,6 +15,8 @@ public class PlayerDamage : MonoBehaviour
     private Animator anim;
     private SpriteRenderer sprite;
 
+    private string coroutine_Blink = "Blink";
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -38,7 +40,7 @@ public class PlayerDamage : MonoBehaviour
 
             if (lifeCount >= 0)
             {
-                StartCoroutine(Blink());
+                StartCoroutine(coroutine_Blink);
                 lifeText.text = "x" + lifeCount;
             }
             if (lifeCount == 0)
@@ -57,17 +59,17 @@ public class PlayerDamage : MonoBehaviour
 
     IEnumerator Blink()
     {
-        sprite.color = new Color(1, 1, 1, .5f);
+        sprite.color = new Color(1, 1, 1, 0.5f);
         yield return new WaitForSeconds(0.2f);
         sprite.color = new Color(1, 1, 1, 1f);
         yield return new WaitForSeconds(0.2f);
-        StartCoroutine(Blink());
+        StartCoroutine(coroutine_Blink);
     }
 
     IEnumerator WaitForDamage()
     {
-        StopCoroutine(Blink());
         yield return new WaitForSeconds(2f);
+        StopCoroutine(coroutine_Blink);
         canDamage = true;
     }
 
