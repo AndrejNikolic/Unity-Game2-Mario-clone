@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5242772871778033045}
   - component: {fileID: 2124011800176534095}
   - component: {fileID: 77777497}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlockCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5808527648044945940}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CollisionBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}

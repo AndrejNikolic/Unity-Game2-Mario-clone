@@ -70,7 +70,8 @@ public class PlayerMovement : MonoBehaviour
 
     void CheckIfGrounded()
     {
-        isGrounded = Physics2D.Raycast(groundCheckPosition.position, Vector2.down, 0.1f, groundLayer);
+        Vector2 boxSize = new Vector2(0.5f, 0.001f);
+        isGrounded = Physics2D.BoxCast(groundCheckPosition.position, boxSize, 0, Vector2.down, 0.1f, groundLayer);
         if (isGrounded)
         {
             if (jumped)

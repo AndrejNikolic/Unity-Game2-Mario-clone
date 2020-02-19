@@ -48,7 +48,7 @@ public class FireBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == MyTags.BEETLE_TAG || collision.gameObject.name == "Snail" 
-            || collision.gameObject.tag == MyTags.SPIDER_TAG || collision.gameObject.tag == MyTags.BOSS_TAG)
+            || collision.gameObject.tag == MyTags.SPIDER_TAG || collision.gameObject.tag == MyTags.BOSS_TAG || collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             anim.Play("Explode");
             canMove = false;
