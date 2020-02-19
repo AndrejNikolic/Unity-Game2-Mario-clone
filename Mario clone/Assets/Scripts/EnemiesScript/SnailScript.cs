@@ -59,7 +59,7 @@ public class SnailScript : MonoBehaviour
         RaycastHit2D leftHit = Physics2D.Raycast(left_Collision.position, Vector2.left, 0.1f, playerLayer);
         RaycastHit2D rightHit = Physics2D.Raycast(right_Collision.position, Vector2.right, 0.1f, playerLayer);
 
-        Collider2D topHit = Physics2D.OverlapCircle(top_Collision.position, 0.2f, playerLayer);
+        Collider2D topHit = Physics2D.OverlapCircle(top_Collision.position, 0.3f, playerLayer);
 
         if (topHit != null)
         {
@@ -79,8 +79,8 @@ public class SnailScript : MonoBehaviour
                     if (tag == MyTags.BEETLE_TAG)
                     {
                         //anim.Play("Stunned");
-                        CoinScript.addScore();
                         StartCoroutine(Dead(0.5f));
+                        CoinScript.addScore();
                     }
 
                 } else
@@ -88,8 +88,8 @@ public class SnailScript : MonoBehaviour
                     if (tag != MyTags.BEETLE_TAG)
                     {
                         myBody.velocity = new Vector2(15f, myBody.velocity.y);
-                        CoinScript.addScore();
                         StartCoroutine(Dead(3f));
+                        CoinScript.addScore();
                     }
                 }
             }
@@ -109,8 +109,8 @@ public class SnailScript : MonoBehaviour
                     if (tag != MyTags.BEETLE_TAG)
                     {
                         myBody.velocity = new Vector2(15f, myBody.velocity.y);
-                        CoinScript.addScore();
                         StartCoroutine(Dead(3f));
+                        CoinScript.addScore();
                     }
                 }
             }
@@ -129,8 +129,8 @@ public class SnailScript : MonoBehaviour
                     if (tag != MyTags.BEETLE_TAG)
                     {
                         myBody.velocity = new Vector2(-15f, myBody.velocity.y);
-                        CoinScript.addScore();
                         StartCoroutine(Dead(3f));
+                        CoinScript.addScore();
                     }
                 }
             }
@@ -179,8 +179,8 @@ public class SnailScript : MonoBehaviour
                 anim.Play("Stunned");
                 canMove = false;
                 myBody.velocity = new Vector2(0, 0);
-                CoinScript.addScore();
                 StartCoroutine(Dead(0.4f));
+                CoinScript.addScore();
             } else if(tag == MyTags.SNAIL_TAG)
             {
                 if (!stunned)
