@@ -22,7 +22,11 @@ public class GameOverController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        endScore.text = "YOUR SCORE IS " + CoinScript.score.ToString();
+        endScore.text = CoinScript.score.ToString();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
     public void RestartGame()
@@ -30,4 +34,9 @@ public class GameOverController : MonoBehaviour
         SceneManager.LoadScene("Gameplay");
         CoinScript.score = 0;
     }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
 }

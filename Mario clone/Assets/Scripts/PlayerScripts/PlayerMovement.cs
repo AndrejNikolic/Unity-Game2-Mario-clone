@@ -27,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -35,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     {
         CheckIfGrounded();
         PlayerJump();
+        MainMenu();
     }
 
     // called every few frames, change it in Edit > Project Settings > Time > Fixed Timestep
@@ -95,6 +95,13 @@ public class PlayerMovement : MonoBehaviour
                 anim.SetBool("Jump", true);
                 jumpSound.Play();
             }
+        }
+    }
+
+    void MainMenu() {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 
