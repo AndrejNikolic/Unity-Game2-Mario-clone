@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -97,6 +98,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) //works only if one of two game objects is set as trigger in box collider
     {
+        if (collision.gameObject.name == "Castle")
+        {
+            SceneManager.LoadScene("Victory");
+        }
     }
 
 }// end PlayerMovement 

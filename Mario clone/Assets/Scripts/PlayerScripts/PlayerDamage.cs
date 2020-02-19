@@ -93,8 +93,8 @@ public class PlayerDamage : MonoBehaviour
 
     IEnumerator RestartGame()
     {
-        yield return new WaitForSecondsRealtime(2f);
-        SceneManager.LoadScene("Gameplay");
-        
+        yield return new WaitForSecondsRealtime(1f);
+        SceneManager.LoadScene("GameOver");
+
     }
 } //end PlayerDamage

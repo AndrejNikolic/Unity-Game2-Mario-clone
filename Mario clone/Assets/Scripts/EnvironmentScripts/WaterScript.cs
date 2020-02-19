@@ -27,7 +27,8 @@ public class WaterScript : MonoBehaviour
 
     IEnumerator RestartGame()
     {
-        yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("Gameplay");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("GameOver");
+
     }
 }
