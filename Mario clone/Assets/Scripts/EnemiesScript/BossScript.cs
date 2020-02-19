@@ -31,7 +31,7 @@ public class BossScript : MonoBehaviour
     void Attack()
     {
         GameObject obj = Instantiate(stone, attactStart.position, Quaternion.identity);
-        obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-200f, -800f), 0f));
+        obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-300f, -600f), 0f));
     }
 
     void BackToIdle()
@@ -47,7 +47,7 @@ public class BossScript : MonoBehaviour
 
     IEnumerator StartAttack()
     {
-        yield return new WaitForSeconds(Random.Range(0.5f, 2f));
+        yield return new WaitForSeconds(Random.Range(1f, 2f));
 
         anim.Play("BossAttack");
         StartCoroutine(coroutine_Name);

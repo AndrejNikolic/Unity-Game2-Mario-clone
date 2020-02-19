@@ -10,6 +10,7 @@ public class SnailScript : MonoBehaviour
     private Animator anim;
 
     public LayerMask playerLayer;
+    public LayerMask groundLayer;
 
     private bool moveLeft;
 
@@ -78,6 +79,7 @@ public class SnailScript : MonoBehaviour
                     if (tag == MyTags.BEETLE_TAG)
                     {
                         //anim.Play("Stunned");
+                        CoinScript.addScore();
                         StartCoroutine(Dead(0.5f));
                     }
 
@@ -86,6 +88,7 @@ public class SnailScript : MonoBehaviour
                     if (tag != MyTags.BEETLE_TAG)
                     {
                         myBody.velocity = new Vector2(15f, myBody.velocity.y);
+                        CoinScript.addScore();
                         StartCoroutine(Dead(3f));
                     }
                 }
@@ -106,6 +109,7 @@ public class SnailScript : MonoBehaviour
                     if (tag != MyTags.BEETLE_TAG)
                     {
                         myBody.velocity = new Vector2(15f, myBody.velocity.y);
+                        CoinScript.addScore();
                         StartCoroutine(Dead(3f));
                     }
                 }
@@ -125,6 +129,7 @@ public class SnailScript : MonoBehaviour
                     if (tag != MyTags.BEETLE_TAG)
                     {
                         myBody.velocity = new Vector2(-15f, myBody.velocity.y);
+                        CoinScript.addScore();
                         StartCoroutine(Dead(3f));
                     }
                 }
@@ -132,10 +137,11 @@ public class SnailScript : MonoBehaviour
         }
 
         // Testing if we don't detect collision
-        if (!Physics2D.Raycast(down_Collision.position, Vector2.down, 0.1f))
+        if (!Physics2D.Raycast(down_Collision.position, Vector2.down, 0.2f, groundLayer))
         {
             ChangeDirection();
         }
+
     }
 
     void ChangeDirection()
@@ -158,7 +164,6 @@ public class SnailScript : MonoBehaviour
 
         transform.localScale = tempScale;
     }
-
     IEnumerator Dead(float timer)
     {
         yield return new WaitForSeconds(timer);
@@ -174,7 +179,7 @@ public class SnailScript : MonoBehaviour
                 anim.Play("Stunned");
                 canMove = false;
                 myBody.velocity = new Vector2(0, 0);
-
+                CoinScript.addScore();
                 StartCoroutine(Dead(0.4f));
             } else if(tag == MyTags.SNAIL_TAG)
             {
@@ -184,12 +189,21 @@ public class SnailScript : MonoBehaviour
                     canMove = false;
                     stunned = true;
                     myBody.velocity = new Vector2(0, 0);
+                    CoinScript.addScore();
                 }
                 else
                 {
                     gameObject.SetActive(false);
                 }
             }
+        } 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            ChangeDirection();
         }
     }
 

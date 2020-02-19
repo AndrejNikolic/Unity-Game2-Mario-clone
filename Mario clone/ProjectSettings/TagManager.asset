@@ -11,6 +11,7 @@ TagManager:
   - Spider
   - Coin
   - Boss
+  - Obstacle
   layers:
   - Default
   - TransparentFX

@@ -103,6 +103,7 @@ public class BirdScript : MonoBehaviour
             canMove = false;
 
             StartCoroutine(BirdDead());
+            CoinScript.addScore();
         }
     }
 

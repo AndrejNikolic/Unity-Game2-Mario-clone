@@ -39,6 +39,7 @@ public class BossHealth : MonoBehaviour
             if (collision.tag == MyTags.BULLET_TAG)
             {
                 health--;
+                CoinScript.addScore();
                 canDamage = false;
 
                 if (health == 0)

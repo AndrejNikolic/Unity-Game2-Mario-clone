@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
 
     public Transform groundCheckPosition;
+    public AudioSource jumpSound;
     public LayerMask groundLayer;
 
     private bool isGrounded;
@@ -92,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
                 jumped = true;
                 myBody.velocity = new Vector2(myBody.velocity.x, jumpPower);
                 anim.SetBool("Jump", true);
+                jumpSound.Play();
             }
         }
     }

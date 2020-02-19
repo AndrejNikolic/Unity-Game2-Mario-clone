@@ -11,11 +11,12 @@ public class GameOverController : MonoBehaviour
     private void Awake()
     {
         endScore = GameObject.Find("ScoreText").GetComponent<Text>();
+
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

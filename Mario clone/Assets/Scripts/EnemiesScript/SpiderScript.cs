@@ -65,6 +65,7 @@ public class SpiderScript : MonoBehaviour
             anim.Play("SpiderDead");
             myBody.bodyType = RigidbodyType2D.Dynamic;
 
+            CoinScript.addScore();
             StartCoroutine(SpiderDead());
             StopCoroutine(coroutine_Name);
         }

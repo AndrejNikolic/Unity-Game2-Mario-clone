@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class StoneScript : MonoBehaviour
 {
+    //private AudioSource audioManager;
+
+    private void Awake()
+    {
+        //audioManager = GetComponent<AudioSource>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         Invoke("Deactivate", 4f);
+        //audioManager.Play();
     }
 
     void Deactivate()

@@ -47,7 +47,8 @@ public class PlayerDamage : MonoBehaviour
             {
                 //restart
                 Time.timeScale = 0f; //stopping game
-                StartCoroutine(RestartGame());
+                SceneManager.LoadScene("GameOver");
+                //StartCoroutine(RestartGame());
             }
             canDamage = false;
 
@@ -91,10 +92,9 @@ public class PlayerDamage : MonoBehaviour
         
     }
 
-    IEnumerator RestartGame()
-    {
-        yield return new WaitForSecondsRealtime(1f);
-        SceneManager.LoadScene("GameOver");
+    //IEnumerator RestartGame()
+    //{
+    //    yield return new WaitForSecondsRealtime(0f);
 
-    }
+    //}
 } //end PlayerDamage
